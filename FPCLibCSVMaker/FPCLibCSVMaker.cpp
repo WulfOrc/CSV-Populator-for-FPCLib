@@ -1,4 +1,4 @@
-// FPCLibCSVMaker.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// CSV Fill in for basic recording
 //
 
 #include <iostream>
@@ -18,49 +18,53 @@ int main( int argc, char* argv[])
     string call;
 
     cout << "Booting up LibCSV\n";
-    ofstream myfile;
-    myfile.open("FPCLibRec.csv", ios_base::app);
-    myfile << "\n"; //Safety to gauruntee a newline 
+    
+    
+    string userInput;
+    cout << "Press (a) to begin process, Press (b) to exit";
 
-    cout << "Please enter the requested file data points in order\n";
-    cout << "Title\n";
-    getline(cin, title);
-    myfile << title << ",";
-    cout << "Author\n";
-    getline(cin, author);
-    myfile << author << ",";
-    cout << "Date of Publication\n";
-    getline(cin, date);
-    myfile << date << ",";
-    cout << "Edition (first if unknown)\n";
-    getline(cin, edition);
-    myfile << edition << ",";
-    cout << "ISBN (leave blank if not applicable)\n";
-    getline(cin, isbn);
-    myfile << isbn << ",";
-    cout << "Shelving Location\n";
-    getline(cin, location);
-    myfile << location << ",";
-    cout << "Call Number\n";
-    getline(cin, call);
-    myfile << call << ",";
+    getline(cin, userInput);
 
-    cout << "Thank you";
-    return 0;
+    while (!userInput.compare("a")) {
+        ofstream myfile;
+        myfile.open("FPCLibRec.csv", ios_base::app);
+        myfile << "\n"; //Safety to gauruntee a newline 
+        cout << "Please enter the requested file data points in order\n";
+        cout << "Title\n";
+        getline(cin, title);
+        myfile << title << ",";
+        cout << "Author\n";
+        getline(cin, author);
+        myfile << author << ",";
+        cout << "Date of Publication\n";
+        getline(cin, date);
+        myfile << date << ",";
+        cout << "Edition (first if unknown)\n";
+        getline(cin, edition);
+        myfile << edition << ",";
+        cout << "ISBN (leave blank if not applicable)\n";
+        getline(cin, isbn);
+        myfile << isbn << ",";
+        cout << "Shelving Location\n";
+        getline(cin, location);
+        myfile << location << ",";
+        cout << "Call Number\n";
+        getline(cin, call);
+        myfile << call << ",";
+        myfile.close();
 
+        cout << "Press (a) to begin process, Press (b) to exit";
 
+        getline(cin, userInput);
+    }
+    
+        cout << "Thank you";
+        return 0;
+   
 
-    /*
-    std::ofstream myfile;
-    myfile.open("example.csv");
-    myfile << "This is the first cell in the first column.\n";
-    myfile << "a,b,c,\n";
-    myfile << "c,s,v,\n";
-    myfile << "1,2,3,444\n";
-    myfile << "semi;colon";
-    myfile.close();
-    return 0;
-    */
+    
+
+    
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
